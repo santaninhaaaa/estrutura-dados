@@ -8,9 +8,9 @@ main() //funcao q pode chamar outras funçoes - OBRIGATORIO
     int n;
 
 	printf("Digite um numero");
-    scanf (”%d”, &n); //funcao de entrada - aguarda entrada do user e o &n vai ser armazenado na memoria
-    printf(”O numero digitado foi = %d \n”, n);//funcao de saida - mostra o resultado na tela
-    system(”PAUSE”); //isso é do proprio MS-DOS
+    scanf ("%d", &n); //funcao de entrada - aguarda entrada do user e o &n vai ser armazenado na memoria
+    printf("O numero digitado foi = %d \n", n);//funcao de saida - mostra o resultado na tela
+    system("PAUSE"); //isso é do proprio MS-DOS
 
 
 /*
