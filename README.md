@@ -42,3 +42,12 @@ main() //funcao q pode chamar outras funçoes - OBRIGATORIO
 ```
 **Linguagens compiladas:** - compila o arquivo e cria um executável
 **Linguagens interpretadas:** - funciona em tempo de execução, tempo real
+
+Para compilar o código é só digitar no terminal
+```
+gcc name.c -o nameexe
+
+// e pra executar só fazer
+
+./nameexe
+```
