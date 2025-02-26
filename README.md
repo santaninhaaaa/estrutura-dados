@@ -40,7 +40,7 @@ main() //funcao q pode chamar outras funçoes - OBRIGATORIO
 
 }
 ```
-**Linguagens compiladas:** - compila o arquivo e cria um executável
+**Linguagens compiladas:** - compila o arquivo e cria um executável  \
 **Linguagens interpretadas:** - funciona em tempo de execução, tempo real
 
 Para compilar o código é só digitar no terminal
@@ -68,7 +68,7 @@ puts() //envia uma string - printf -> puts (automaticamente pula de linha)
 
 getch()//está aguardando um caracter
 ```
-**putchar()** imprime um caracter da tabela ASCII praticamente
+**putchar()** imprime um caracter da tabela ASCII praticamente  \
 **getchar()** recebe um único caracter, tipo o scanf()
 ```c
 char ch = 'A';
@@ -76,8 +76,8 @@ putchar(ch); //mostra variavel ch
 putchar(65); //mostra letra A de acordo com o codigo ASCII
 putchar('B'); //mostra a letra B
 ```
-**getch()** - não exibe o que digitei
-**getche()** - exibe o que digitei
+**getch()** - não exibe o que digitei  \
+**getche()** - exibe o que digitei  \
 Ambos não precisão do ENTER pra meio que abortar o programa
 
 # Manipulação de String
