@@ -29,7 +29,7 @@ main()
     float media = (float)soma / 10; // dividir pra ter média q será float
     //já q soma é inteiro o (float) faz ele se transformar em float
 
-    printf("\n\n A media dos numeros digitados e -> %.2f \n\n", media);//%.2f é pra ser duas casas decimais apenas
+    printf("\n\nA media dos numeros digitados e -> %.2f \n\n", media);//%.2f é pra ser duas casas decimais apenas
     printf("O maior dos numeros digitados e -> %d \n\n", maior);
     printf("O menor dos numeros digitados e -> %d \n\n", menor);
 }
