@@ -88,8 +88,10 @@ strlen(string) //retorna numero de caracteres, não levando em conta o terminado
 strcat(string1, string2) //praticamente concatena
 strcmp(string1, string2) //compara as duas strings, retorna 0 são iguais, ou outro number se string1 for menor ou maior(EM RELAÇÃO A ASCII)
 strcpy(string1, string2) //stringcopy - conteudo da string2 SUBSTITUI/COPIA o valor para string1
+strncpy(string1, string2, n) //copia ate N caracteres da str2 pra str1. if str2 for menor q N, preenche o restante do str1 com terminador nulo
 strupr(string) //transforma stirng em CAIXA ALTA
 strlwr(string) //transforma string em minusculo
+atoi(string) //converte string com numero em inteiro. não tendo numero, retorna 0
 
 #include <ctype.h>
 toupper(variavel) //transforma UM caracter em MAIUSCULO
