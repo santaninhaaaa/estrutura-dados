@@ -1,21 +1,19 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-// Implemente um programa que receba um nome e imprima o nome somente se a primeira letra do nome for ‘a’ (maiúscula ou minúscula)
+//Faça um programa em C que lê um string de 5 caracteres e escreve a string invertida.
 
 main(){
 
-    char str[50];
-    int i, tam = 0;
+    char str[5];
+    int i;
 
-
-    puts("Digite um nome: ");
+    puts("Escreva uma palavra/string de ate 5 caracteres: ");
     gets(str);
 
-    if (str[0] == 'a' || str[0] == 'A'){
-        printf("Você digitou o nome %s", str);
-    } else { 
-        printf("Apenas mostra nomes que começam com 'A' ou 'a'"); 
+    puts("A palavra/string digitada de forma invertida fica: ");
+    for (i=4;i>=0;i--){
+        printf("%c", str[i]);
     }
+    printf("\n");
 
-}
+}   

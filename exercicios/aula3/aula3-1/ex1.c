@@ -1,23 +1,17 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-//Crie um programa que calcula o comprimento de uma string (não use a função strlen).
-
+//Escreva um programa que leia duas strings e imprime as duas strings na tela. Imprima também a segunda letra de cada string.
 
 main(){
 
-    char str[100];
-    int i, tam = 0;
+    char str1[25], str2[25];
+    puts("Digite uma palavra: ");
+    gets(str1);
 
+    printf("Agora que %s foi digitado, digite outra palavra: \n", str1);
+    gets(str2);
 
-    puts("Digite uma string qualquer: ");
-    scanf("%s", str);
+    printf("Certo, foram digitados %s e %s, sendo assim a segunda letra de cada um seria: '%c' e '%c'", str1, str2, str1[1], str2[1]);
 
-    for(i=0;str[i]!='\0';i++){ //loop pra contar até a string não ser igual ao terminador
-
-        tam++;
-    }
-
-    printf("O comprimento da string é de %d caracteres", tam);
 }
 
