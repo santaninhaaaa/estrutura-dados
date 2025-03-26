@@ -97,3 +97,31 @@ atoi(string) //converte string com numero em inteiro. não tendo numero, retorna
 toupper(variavel) //transforma UM caracter em MAIUSCULO
 tolower(variavel) //transforma um caracter em minusculo
 ```
+
+# Matrizes - AULA 4
+
+```c
+
+    MATRIZES
+
+        0       1       2       3   X-
+
+    0   a0.0     a0.1     a0.2     a0.3
+    
+    1   a1.0     a1.1     a1.2     a1.3
+
+    2   a2.0     a2.1     a2.2     a2.3
+
+    3   a3.0     a3.1     a3.2     a3.3
+
+    YI
+
+    int matriz[1][3] = a1.3
+
+    for(x=0;x<4;x++){
+        for (y=0;y<4;y++){
+            scanf("%d", %matriz[x][y]);
+        }
+    }
+
+```
