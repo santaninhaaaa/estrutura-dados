@@ -155,7 +155,7 @@ Devolve endereço de memória, representado pelo caractere &, ele é **unário**
 
 Exemplo ``` exemplo-ponteiro-aula5.c ```
 
-**Uso do operador *** \
+**Uso do operador (*)** \
 Devolve conteúdo da variável \
 
 Exemplo ``` exemplo-ponteiro-aula5.c ```
