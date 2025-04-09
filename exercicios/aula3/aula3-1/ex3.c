@@ -20,4 +20,5 @@ main(){
     }
     
     printf("A palavra/string digitada: '%s' \nA palavra/string alterada: '%s'\n", ogstr, str);
+
 }

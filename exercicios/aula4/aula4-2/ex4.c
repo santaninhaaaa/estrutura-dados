@@ -4,7 +4,7 @@
 
 main(){
 
-    int v[10],i,n;
+    int v[10],i,n,val;
 
     printf("Complete o vetor de 10 valores:\n");
 
@@ -18,12 +18,12 @@ main(){
     for(i=0;i<10;i++){
         if (n == v[i]){
             printf("O valor digitado %d, se encontra na posicao %d do vetor", n,i);
-        }
-
-        if (n != v[i]){
-            printf("O valor digitado nao existe no vetor");
+            val = 1;
         }
     }
 
+    if(val!=1){
+        printf("O valor digitado nao existe\n");
+    }
 
 }

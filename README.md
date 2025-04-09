@@ -21,6 +21,7 @@ main() //funcao q pode chamar outras funçoes - OBRIGATORIO
 
 	printf("Digite um numero");
     scanf (”%d”, &n); //funcao de entrada - aguarda entrada do user e o %n vai ser armazenado na memoria
+    //& ele scanea o ENDEREÇO de n
     printf(”O numero digitado foi = %d \n”, n);//funcao de saida - mostra o resultado na tela
     system(”PAUSE”); //isso é do proprio MS-DOS
 
@@ -32,6 +33,7 @@ main() //funcao q pode chamar outras funçoes - OBRIGATORIO
 	%f -> float n1;
 	%c -> char c; //variavel char apenas
 	%s -> char nome[50]; //vetor de caracteres de ate 50, string em outras linguas
+    %p -> mostra a localização na memória em hexadecimal
 
 	cada espaço da memoria é chamado de endereço q é reservado em hexadecimal
 	ele obtem endereço de memoria -> &
@@ -125,3 +127,35 @@ tolower(variavel) //transforma um caracter em minusculo
     }
 
 ```
+
+## Ponteiros (& e *)
+
+É um recurso que utilizamos na linguagem chamado de apontador, um tipo de variável especial. Armazena o ENDEREÇO DE POSIÇÃO DE MEMÓRIA \
+A memória RAM é endereçada, dividido em páginas. Cada dado da memória, ocupa uma página. Os endereços de memória são hexadecimais.
+0-9 até A-F \
+Variável do tipo ponteiro, APONTA outra variável, NÃO ARMAZENA VALORES, armazena apenas 
+
+´´´
+RAM
+___________________________________________________________0001F2___0001F1_______
+|   |   |   |   |   |   |   | 0001F1  |   |   |   |   |   |    10  |    5  | SO |
+-------------------------------x-------------------------------n--------i--------
+// 0001F2 é o ENDEREÇO DA MEMÓRIA
+
+int *x;
+printf("%d", n); //mostra 10
+printf("%d", &n); //mostra 0001F2
+
+pri
+
+´´´
+
+**Uso do operador &** \
+Devolve endereço de memória, representado pelo caractere &, ele é **unário** por necessidar de um operador \
+
+Exemplo ´´´exemplo-ponteiro-aula5.c´´´
+
+**Uso do operador *** \
+Devolve conteúdo da variável \
+
+Exemplo ´´´exemplo-ponteiro-aula5.c´´´

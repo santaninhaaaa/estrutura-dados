@@ -4,7 +4,7 @@
 
 main(){
 
-    int M[3][3],x,y,n,i=0;
+    int M[3][3],x,y,n,i=0,v;
 
     printf("Complete essa matriz de tamanho 3x3, 9 numeros:\n");
 
@@ -29,9 +29,9 @@ main(){
     for(x=0;x<3;x++){
         for(y=0;y<3;y++){
 
-            if(n == M[x][y]){
+            if (n == M[x][y]){
                 printf("\nO numero consta na matriz, posicao x=%d; y=%d", x,y);
-        
+                v = 1;
             }
             if(M[x][y] > n){
                 i++;
@@ -39,5 +39,10 @@ main(){
         }
     }
 
-    printf("\nTemos o total de %d numeros maiores que %d na matriz\n", i, n);
+    if(v == 1){
+        printf("\nTemos o total de %d numeros maiores que %d na matriz\n", i, n);
+    } else {
+        printf("\nO numero digitado nao tem na matriz\n");
+    }
+
 }
