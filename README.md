@@ -135,7 +135,7 @@ A memória RAM é endereçada, dividido em páginas. Cada dado da memória, ocup
 0-9 até A-F \
 Variável do tipo ponteiro, APONTA outra variável, NÃO ARMAZENA VALORES, armazena apenas 
 
-´´´
+```
 RAM
 _______________________________0001F2___0001F1_______
 | 0001F1  |   |   |   |   |   |    10  |    5  | SO |
@@ -148,20 +148,14 @@ printf("%d", &n); //mostra 0001F2
 
 pri
 
-´´´
+```
 
 **Uso do operador &** \
 Devolve endereço de memória, representado pelo caractere &, ele é **unário** por necessidar de um operador \
 
-Exemplo 
-´´´
-exemplo-ponteiro-aula5.c
-´´´
+Exemplo ``` exemplo-ponteiro-aula5.c ```
 
 **Uso do operador *** \
 Devolve conteúdo da variável \
 
-Exemplo 
-´´´
-exemplo-ponteiro-aula5.c
-´´´
+Exemplo ``` exemplo-ponteiro-aula5.c ```
