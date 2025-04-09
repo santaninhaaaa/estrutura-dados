@@ -137,9 +137,9 @@ Variável do tipo ponteiro, APONTA outra variável, NÃO ARMAZENA VALORES, armaz
 
 ´´´
 RAM
-___________________________________________________________0001F2___0001F1_______
-|   |   |   |   |   |   |   | 0001F1  |   |   |   |   |   |    10  |    5  | SO |
--------------------------------x-------------------------------n--------i--------
+_______________________________0001F2___0001F1_______
+| 0001F1  |   |   |   |   |   |    10  |    5  | SO |
+---x-------------------------------n--------i--------
 // 0001F2 é o ENDEREÇO DA MEMÓRIA
 
 int *x;
@@ -153,9 +153,15 @@ pri
 **Uso do operador &** \
 Devolve endereço de memória, representado pelo caractere &, ele é **unário** por necessidar de um operador \
 
-Exemplo ´´´exemplo-ponteiro-aula5.c´´´
+Exemplo 
+´´´
+exemplo-ponteiro-aula5.c
+´´´
 
 **Uso do operador *** \
 Devolve conteúdo da variável \
 
-Exemplo ´´´exemplo-ponteiro-aula5.c´´´
+Exemplo 
+´´´
+exemplo-ponteiro-aula5.c
+´´´
