@@ -170,13 +170,13 @@ Você pode chamar sua função diversas vezes
 
     }
 
-    soma(...){ //fazendo uma chamada da função exibir
+    int soma(...){ //fazendo uma chamada da função exibir
 
         exibir(res);
 
     }
 
-    exibir(...){
+    float exibir(...){
 
         //conteudo
 
