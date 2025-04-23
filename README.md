@@ -159,3 +159,29 @@ Exemplo ``` exemplo-ponteiro-aula5.c ```
 Devolve conteúdo da variável \
 
 Exemplo ``` exemplo-ponteiro-aula5.c ```
+
+## Funções
+Você pode chamar sua função diversas vezes
+
+```c 
+    main(){ //fazendo uma chamada da função soma
+
+    soma(a,b);
+
+    }
+
+    soma(...){ //fazendo uma chamada da função exibir
+
+        exibir(res);
+
+    }
+
+    exibir(...){
+
+        //conteudo
+
+    }
+    
+```
+
+Passagem de parâmetro por referência = **Ponteiros**
