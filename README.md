@@ -183,5 +183,64 @@ Você pode chamar sua função diversas vezes
     }
     
 ```
+**Passagem de parâmetro por valor** \
 
-Passagem de parâmetro por referência = **Ponteiros**
+O valor é exatamente copiado para a função
+```c
+#include <stdio.h>
+int soma_dobro(int a, int b); //escopo da função declarado antes da main
+
+main(){
+    int x, y, res;
+
+    //solicitando inteiros x e y para serem completados
+    //x = 5 e y = 3
+
+    res = soma_dobro(x,y); //5,3
+    //os exatos valores de X e Y são copiados para a função em A e B
+
+    printf("a soma do dobro de %d e %d = %d", x,y,res)
+    //a soma do dobro de 5 e 3 = 16
+}
+//função apos a main
+int soma_dobro(int a, int b){
+    int soma;
+    a = 2*a;//5=10
+    b = 2*b;//3=6
+    soma = a + b;//16 = 10+6
+    return soma;
+}
+
+//as funções podem ser começadas antes da main
+//se começadas após a main, deve ter um escopo anteriormente a main
+//assim que acaba a função, ela é terminada
+
+```
+**Passagem de parâmetro por referência = Ponteiros** \
+```c
+#include <stdio.h>
+int soma_dobro(int *a, int *b); //escopo da função declarado antes da main
+
+main(){
+    int x, y, res;
+
+    //solicitando inteiros x e y para serem completados
+    //x = 5 e y = 3
+
+    res = soma_dobro(&x,&y); //00002, 00001
+    //vc está utilizando o ENDEREÇO DE MEMORIA nao o valor
+    //o valor é substituido, x e y serão sobrescritos
+
+    printf("a soma do dobro de %d e %d = %d", x,y,res);
+    //a soma do dobro de 10 e 6 = 16
+}
+//função apos a main
+int soma_dobro(int *a, int *b){ //aqui aconteceu como uma SUBSTITUIÇÃO, os valores foram atualizados
+    int soma;
+    *a = 2*(*a);
+    *b = 2*(*b);
+    soma = *a + *b;
+    return soma;
+}
+
+```
