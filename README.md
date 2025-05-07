@@ -1,6 +1,6 @@
 # estrutura-dados
 
-# Estruturas de Dados - Linguagem C
+# Estruturas de Dados - Linguagem C - Aula 1
 
 - **Funções:** if, else, for, while
 - **Vetores**
@@ -54,7 +54,7 @@ gcc name.c -o nameexe
 ./nameexe
 ```
 
-# Vetores de Caracreres
+# Vetores de Caracteres - Aula 2
 **Strings:** tem seu último caractere como um '\0', esse campo é pra indicar que finalizou a string, seria um terminador
 ```c
 //utiliza-se <conio.h> pro getch() como se fosse uma pausa, está apenas esperando um caractere
@@ -82,7 +82,7 @@ putchar('B'); //mostra a letra B
 **getche()** - exibe o que digitei  \
 Ambos não precisão do ENTER pra meio que abortar o programa
 
-# Manipulação de String
+# Manipulação de String - Aula 3
 **<string.h>** - biblioteca pra manipular as strings
 ```c
 #include <string.h>
@@ -100,7 +100,7 @@ toupper(variavel) //transforma UM caracter em MAIUSCULO
 tolower(variavel) //transforma um caracter em minusculo
 ```
 
-# Matrizes - AULA 4
+# Matrizes - Aula 4
 
 ```c
 
@@ -128,7 +128,7 @@ tolower(variavel) //transforma um caracter em minusculo
 
 ```
 
-## Ponteiros (& e *)
+# Ponteiros (& e *) - Aula 5
 
 É um recurso que utilizamos na linguagem chamado de apontador, um tipo de variável especial. Armazena o ENDEREÇO DE POSIÇÃO DE MEMÓRIA \
 A memória RAM é endereçada, dividido em páginas. Cada dado da memória, ocupa uma página. Os endereços de memória são hexadecimais.
@@ -160,7 +160,7 @@ Devolve conteúdo da variável \
 
 Exemplo ``` exemplo-ponteiro-aula5.c ```
 
-## Funções
+# Funções - Aula 6
 Você pode chamar sua função diversas vezes
 
 ```c 
@@ -244,3 +244,76 @@ int soma_dobro(int *a, int *b){ //aqui aconteceu como uma SUBSTITUIÇÃO, os val
 }
 
 ```
+
+# Structs (Estruturas ou registros) - Aula 7
+
+Vertores e matrizes possuem estruturas de dados homogêneas que armazenam vários valores, mas todos de um mesmo tipo. \
+É comum conjunto de ados de tipos deiferentes. Exemplo: ficha de cadaastro de alunos.
+
+```
+Ficha do Aluno
+    Nome: string
+    Endereço: string
+    Telefone: string
+    RA: int
+    Mensalidade: float
+
+    //conseguimos criar uma struct pra armazenar isso tudo
+```
+
+**Struct:** conjunto de variáveis de tipos iguais ou distintos. As variáveis são chamadas de membros/campos/elementos. \
+Exemplo:
+```
+pessoa -> nome, idade, endereço.
+data -> dia, mes, ano.
+```
+
+## Sintaxe em C
+
+```c
+struct <identificador>{
+    tipo <membro1>;
+    tipo <membro2>;
+    ...
+    tipo <membroN>;
+}<nome da variavel que representa struct>;
+
+struct data{
+    int dia;
+    int mes;
+    int ano;
+} amanha, feriado;
+
+/*  OU  */
+
+main(){
+    struct data hoje;
+}
+
+```
+
+**Para a atribuição de valores podem ser feitos da seguinte forma**
+
+```c
+struct data{
+    int dia;
+    int mes;
+    int ano;
+} amanha, feriado;
+
+hoje.dia = 07;
+hoje.mes = 05;
+hoje.ano = 2025;
+
+/*  OU  */
+
+struct data hoje ={07,05,2025};
+
+//pra obter leitura
+scanf("%d", &amanha.dia);
+//pra printar
+printf("%d", amanha.dia)
+
+```
+
+Structs podem conter structs
