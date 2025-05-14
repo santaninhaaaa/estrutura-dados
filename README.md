@@ -26,7 +26,7 @@ main() //funcao q pode chamar outras funçoes - OBRIGATORIO
     system(”PAUSE”); //isso é do proprio MS-DOS
 
 
-/*
+
 	<stdio.h>
 
 	%d -> int n;
@@ -37,7 +37,6 @@ main() //funcao q pode chamar outras funçoes - OBRIGATORIO
 
 	cada espaço da memoria é chamado de endereço q é reservado em hexadecimal
 	ele obtem endereço de memoria -> &
-*/
 
 
 }
@@ -130,10 +129,11 @@ tolower(variavel) //transforma um caracter em minusculo
 
 # Ponteiros (& e *) - Aula 5
 
-É um recurso que utilizamos na linguagem chamado de apontador, um tipo de variável especial. Armazena o ENDEREÇO DE POSIÇÃO DE MEMÓRIA \
+É um recurso que utilizamos na linguagem chamado de apontador, um tipo de variável especial. Armazena o **ENDEREÇO DE POSIÇÃO DE MEMÓRIA** \
+\
 A memória RAM é endereçada, dividido em páginas. Cada dado da memória, ocupa uma página. Os endereços de memória são hexadecimais.
 0-9 até A-F \
-Variável do tipo ponteiro, APONTA outra variável, NÃO ARMAZENA VALORES, armazena apenas 
+Variável do tipo ponteiro, **APONTA** outra variável, NÃO ARMAZENA VALORES, armazena apenas.
 
 ```
 RAM
@@ -317,3 +317,100 @@ printf("%d", amanha.dia)
 ```
 
 Structs podem conter structs
+
+# Arquivos - Aula 8
+
+Sistemas de E/S podem ser implementados em representação **.bin (binário)** ou em arquivo **.txt (texto)**. \
+Temos a possibilidade de gravar nossas saídas do código, ao invés de executar e os dados serem perdidos. \ \
+
+Essa abstração entre programador e o dispositivo utilizado é chamado de **stream** *(fluxo)* e o dispositivo real é chamado de **arquivo**. \
+É importante entender como streams e arquivos se integram. \
+
+No Banco de Dados, isso pe bastante utilizado, para podermos localizar. Gravação em **.txt** é fácil, porém sua recuperação é trabalhosa. \ \
+
+A gravação do arquivo, tanto faz tanto fez, pode estar em um HD, pendrive. Essa **stream** é independente do dispositivo, sendo a stream de **texto** e **binário** \ \
+
+- **Stream de Texto (.txt)**: Uma sequência de caracteres, literalmente um arquivo de texto, sendo fácil pra gravação, mas difícil de recuperar.
+- **Stream de Binário (.bin)**: Uma sequência de bytes, praticamente como se fosse blocos, structs, sendo mais fácil para gravação e recuperação.
+
+As funções vão começar com o prefixo **"f"**, referindo à ***files***.
+
+```c
+fopen() //função pra fazer abstração do arquivo físico para o código fonte
+
+a = fopen("arquivo.txt", "r"); //("nome do arquivo", "modo de abertura");
+
+
+"r" -> abre arquivo .txt para leitura
+"w" -> abre arquivo .txt para escrita, se houver outro arquivo com o mesmo nome, vai ser sobrescrito
+"a" -> abre arquivo .txt para anexar, se não existir, será criado
+
+"rb" -> abre arquivo .bin para leitura
+"wb" -> abre arquivo .bin para escrita, se houver outro arquivo com o mesmo nome, vai ser sobrescrito
+"ab" -> abre arquivo .bin para anexar, se não existir, será criado
+
+```
+## Funções 
+
+```c
+
+fclose(a) //fecha arquivo
+fputc('x', a) ou putc('x', a); //escreve um char de um arquivo
+ch = fgetc(a) ou ch = getc(a) //lê char de um arquivo
+fprintf(a, "%c", ch) //escreve dados em um arquivo no formato indicado
+fscanf(a, "%d", &n) //lê dados em um arquivo no formato indicado
+
+```
+
+### Outras funções
+```c
+fseek() //posiciona em um byte especifico de um arquivo
+feof() //return true se o fim do arquivo for atingido "end of file"
+ferror() //return true se ocorreu erro
+
+rewind() //recoloca o indicador de posição no inicio do arquivo
+remove() //apaga um arquivo
+
+fflush() //descarrega buffer associado com o arquivo
+fread() //lê os dados em binario
+fwrite() //escreve dados em binario
+
+```
+## Exemplo
+```c
+
+main(){
+
+FILE *arquivo; //atribuimos uma variavel ponteiro do tipo FILE
+arquivo=fopen("texto.txt","r"); //atribuindo variavel para abrir file como leitura
+if(arquivo==NULL){ //se nn existir emite mensagem
+    printf("Inpossivel abrir o arquivo\n");
+} else { //senão, se exisir, emite mensagem
+    printf("Arquivo aberto com sucesso\n");
+    fclose(arquivo); //fecha arquivo
+}
+
+}
+
+
+main(){
+
+    FILE *fp;
+    int i = 0;
+    char c;
+
+    fp = fopen("!texto.txt", "r"); //abrindo file pra leitura
+
+    //contar os caracteres do file
+
+    while ((c = fgetc(fp)) != EOF){ //char = leitura de UM char do arquivo, enquanto não for o final do arquivo
+        putchar(c); //retorna char gravado no .txt
+        i++; //incrementa um
+    } 
+
+    printf("\nNo arquivo text.txt tem total de %d caracteres\n",i); //imprime qtd de caracteres
+    fclose(fp); //fecha arquivo
+}
+
+
+```
