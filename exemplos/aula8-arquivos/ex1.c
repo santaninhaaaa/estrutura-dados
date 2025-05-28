@@ -1,12 +1,16 @@
 #include <stdio.h>
 
-main(){
+main()
+{
 
     FILE *arquivo;
     arquivo = fopen("!texto.txt", "r");
-    if(arquivo==NULL){
+    if (arquivo == NULL)
+    {
         printf("Impossivel abrir o arquivo!\n");
-    } else {
+    }
+    else
+    {
         printf("Arquivo aberto com suscesso\n");
         fclose(arquivo);
     }

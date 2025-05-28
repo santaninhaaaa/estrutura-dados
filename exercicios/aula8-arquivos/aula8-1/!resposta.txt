@@ -1,0 +1,1 @@
+A palavra 'carro', aparece 4 vezes no arquivo!O caracter 'r', aparece 156 vezes no arquivo!
