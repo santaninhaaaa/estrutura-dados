@@ -12,26 +12,35 @@ A dimensão da Matriz é: 3 x 3
 */
 
 #include <stdio.h>
+#include <string.h>
 
 main(){
 
     FILE *arquivo;
-    char c;
+    char valor[10];
     int i = 0;
     int x, y;
 
-    if((arquivo = fopen("!matriz.txt", "r") == NULL)){
+    if((arquivo = fopen("!matriz.txt", "r")) == NULL){
         printf("Impossível abrir arquivo");
     }
 
-    while((c = fgetc(arquivo)) != EOF){
-        if(){
+    while(fgets(valor, sizeof(valor), arquivo) != NULL){
+        x++; //quer dizer q encontrou mais uma linha, estamos contando as linhas por aqui
 
-        } else{
-            i++;
+        if(x == 1){ // na primeira linha ja descobrimos a coluna
+            y = strlen(valor); //estamos medindo a primeira linha, q ja é as colunas
+
+            if (valor[y-1] == '\n'){ //se o valor das colunas - 1 for uma quebra de linha
+                valor[y-1] = '\0'; //vai transformar num terminador
+                y--; //e diminui o valor da coluna pra ficar certinho
+            }
         }
+        
     }
 
+    fclose(arquivo);
 
+    printf("A dimensão da Matriz e: %d x %d\n", y,x);
 
 }

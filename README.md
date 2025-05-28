@@ -357,6 +357,7 @@ a = fopen("arquivo.txt", "r"); //("nome do arquivo", "modo de abertura");
 fclose(a) //fecha arquivo
 fputc('x', a) ou putc('x', a); //escreve um char de um arquivo
 ch = fgetc(a) ou ch = getc(a) //lê char de um arquivo
+fgets(variavel, tamanho int, FILE) //lê string
 fprintf(a, "%c", ch) //escreve dados em um arquivo no formato indicado
 fscanf(a, "%d", &n) //lê dados em um arquivo no formato indicado
 
