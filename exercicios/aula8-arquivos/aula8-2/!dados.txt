@@ -1,10 +1,10 @@
-Vinicius Oliviera Santana    MB1.71 60.00
-Ana Beatriz Costa            FB1.65 65.50
-Lucas Almeida Ferreira       MC1.80 68.75
-João Pedro Ramos             MB1.70 62.20
-Mariana Souza                FD1.55 60.00
-Rafael dos Santos            MA1.90 69.10
-Carla Mendes Rocha           FC1.60 47.80
-Bruno Lima                   MB1.75 63.90
-Fernanda Ribeiro             FA1.70 64.25
-Tiago Henrique Monteiro      MD1.80 67.30
+Vinicius Oliviera Santana     MB1.7160.00
+Ana Beatriz Costa             FB1.6565.50
+Lucas Almeida Ferreira        MC1.8068.75
+João Pedro Ramos              MB1.7062.20
+Mariana Souza                 FD1.5560.00
+Rafael dos Santos             MA1.9069.10
+Carla Mendes Rocha            FC1.6047.80
+Bruno Lima                    MB1.7563.90
+Fernanda Ribeiro              FA1.7064.25
+Tiago Henrique Monteiro       MD1.8067.30

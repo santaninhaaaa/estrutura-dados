@@ -21,8 +21,8 @@ struct info{
 char nome[30];
 char sexo;
 char olho;
-float altura;
-float peso;
+char altura[4];
+char peso[5];
 };
 
 main(){
@@ -37,13 +37,13 @@ main(){
 
     for(i; i<10; i++){
 
-        fscanf(arquivo, "%30c%c%c%f %f", pessoa[i].nome, &pessoa[i].sexo, &pessoa[i].olho, &pessoa[i].altura, &pessoa[i].peso);
+        fscanf(arquivo, " %30c %c %c%4c%5c", pessoa[i].nome, &pessoa[i].sexo, &pessoa[i].olho, pessoa[i].altura, pessoa[i].peso);
 
         printf("Nome: %.30s\n", pessoa[i].nome);
         printf("Sexo: %c\n", pessoa[i].sexo);
         printf("Cor dos olhos: %c\n", pessoa[i].olho);
-        printf("Altura: %.2f metros\n", pessoa[i].altura);
-        printf("Peso: %.2f quilos\n", pessoa[i].peso);
+        printf("Altura: %.4s metros\n", pessoa[i].altura);
+        printf("Peso: %.5s quilos\n", pessoa[i].peso);
         printf("*******************************\n");
 
     }
