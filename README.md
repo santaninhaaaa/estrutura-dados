@@ -135,6 +135,11 @@ A memória RAM é endereçada, dividido em páginas. Cada dado da memória, ocup
 0-9 até A-F \
 Variável do tipo ponteiro, **APONTA** outra variável, NÃO ARMAZENA VALORES, armazena apenas.
 
+| 0001F8 | 0001F7 | 0001F6 | 0001F5 | 0001F4 | 0001F3 | 0001F2 | 0001F1 | 0001F0 |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | 
+| 0001F1 | | | | | | 10 | 5 | SO |
+| x | | | | | | n | i | |
+
 ```
 RAM
 _______________________________0001F2___0001F1_______
