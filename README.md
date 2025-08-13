@@ -320,15 +320,17 @@ Structs podem conter structs
 
 # Arquivos - Aula 8
 
-Sistemas de E/S podem ser implementados em representação **.bin (binário)** ou em arquivo **.txt (texto)**. \
-Temos a possibilidade de gravar nossas saídas do código, ao invés de executar e os dados serem perdidos. \ \
+Sistemas de E/S podem ser implementados em representação **.bin (binário)** ou em arquivo **.txt (texto)**.
 
-Essa abstração entre programador e o dispositivo utilizado é chamado de **stream** *(fluxo)* e o dispositivo real é chamado de **arquivo**. \
-É importante entender como streams e arquivos se integram. \
+Temos a possibilidade de gravar nossas saídas do código, ao invés de executar e os dados serem perdidos. 
 
-No Banco de Dados, isso pe bastante utilizado, para podermos localizar. Gravação em **.txt** é fácil, porém sua recuperação é trabalhosa. \ \
+Essa abstração entre programador e o dispositivo utilizado é chamado de **stream** *(fluxo)* e o dispositivo real é chamado de **arquivo**. 
 
-A gravação do arquivo, tanto faz tanto fez, pode estar em um HD, pendrive. Essa **stream** é independente do dispositivo, sendo a stream de **texto** e **binário** \ \
+É importante entender como streams e arquivos se integram.
+
+No Banco de Dados, isso pe bastante utilizado, para podermos localizar. Gravação em **.txt** é fácil, porém sua recuperação é trabalhosa.
+
+A gravação do arquivo, tanto faz tanto fez, pode estar em um HD, pendrive. Essa **stream** é independente do dispositivo, sendo a stream de **texto** e **binário**
 
 - **Stream de Texto (.txt)**: Uma sequência de caracteres, literalmente um arquivo de texto, sendo fácil pra gravação, mas difícil de recuperar.
 - **Stream de Binário (.bin)**: Uma sequência de bytes, praticamente como se fosse blocos, structs, sendo mais fácil para gravação e recuperação.
@@ -415,3 +417,44 @@ main(){
 
 
 ```
+
+# Arquivos Binários - Aula 9
+
+Utilizado para **manipular** structs. Ocupando menos bytes que .txt
+Utiliza a tabela **<stdlib.h>**
+
+```c
+fread(variavel, tam_bytes, qtd, arquivo)
+
+fwrite(variavel, tam_bytes, qtd, arquivo)
+
+// tam_bytes é um valor que define o número de bytes da estrutura que deve ser lida/escrita
+
+// qtd é o número de estruturas que deve ser lida/escrita
+```
+> Acompanhar exemplo em ex1.c
+
+## Parâmetros
+
+Posicionando o cursor em determinada posição do arquivo:
+
+```c
+int fseek (FILE *arquivo, int numbytes, int modo);
+```
+
+- **Deslocamento:** quantidade ***em bytes*** que deseja deslocar para o posicionamento do cursor (que pode ser negativo)
+- **Modo:** forma do deslocamento que pode ser:
+- - **SEEK_SET:** posição inicial do arquivo
+- - **SEEK_CUR:** posição corrente do arquivo
+- - **SEEK_END:** posição final do arquivo \
+Se for retornado 0, foi possível fazer o deslocamento
+
+```c
+// no final do arquivo
+fseek (arquivo, 0, SEEK_END);
+
+// posição específica
+scanf ("%d", &posicao);
+fseek (arquivo, (posicao-1) * sizeof(struct notas), SSEK_SET);
+```
+> Acompanhar exemplo em **ex2.c pra gravar aquivo em binário**, acompanhar exemplo em **ex3.c pra ler arquivo em binário** e acompanhar exemplo em **ex4.c pra ler uma posição específica**
