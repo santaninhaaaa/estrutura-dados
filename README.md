@@ -142,9 +142,7 @@ Variável do tipo ponteiro, **APONTA** outra variável, NÃO ARMAZENA VALORES, a
 
 ```
 RAM
-_______________________________0001F2___0001F1_______
-| 0001F1  |   |   |   |   |   |    10  |    5  | SO |
----x-------------------------------n--------i--------
+
 // 0001F2 é o ENDEREÇO DA MEMÓRIA
 
 int *x;
