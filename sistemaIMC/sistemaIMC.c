@@ -165,7 +165,8 @@ void listarTodosPacientes(void){
     FILE *arqimc;
 	arqimc = fopen("imc.bin", "rb");
     if (arqimc == NULL) {
-        printf("\nNenhum paciente cadastrado ainda.\n");
+        printf("Nenhum paciente cadastrado.\n");
+		getchar();
 		return;
     }
 
@@ -188,33 +189,35 @@ void excluirPaciente(void){
     char nomeExcluir[50], op;
     struct paciente pac;
     int i = 0;
+    FILE *arqimc;
+	arqimc = fopen("imc.bin", "rb");
+    if (arqimc == NULL) {
+        printf("Nenhum paciente cadastrado.\n");
+		getchar();	
+		return;
+    }
 
     printf("Digite o nome do paciente que deseja excluir: ");
     fgets(nomeExcluir, sizeof(nomeExcluir), stdin);
     nomeExcluir[strcspn(nomeExcluir, "\n")] = '\0';
 
-    FILE *arqimc;
-	arqimc = fopen("imc.bin", "rb");
-    if (arqimc == NULL) {
-        printf("Nenhum paciente cadastrado.\n");
-		return;
-    }
-
-	while (fread(&pac, sizeof(pac), 1, arqimc) == 1){
-		if(strcmp(pac.nome, nomeExcluir) == 0){
-			i = 1;
-			printf("\nPaciente encontrado:\n");
-            printf("Nome: %s\n", pac.nome);
-            printf("Idade: %d\n", pac.idade);
-            printf("Altura: %.2f\n", pac.altura);
-            printf("Peso: %.2f\n", pac.peso);
-            printf("IMC: %.2f\n\n", pac.imc);
-		}
-	}
 	if (i != 1){
 		printf("Paciente \"%s\" nao encontrado!\n", nomeExcluir);
 		fclose(arqimc);
+		getchar();
 		return;
+	} else {
+		printf("NOME\t\tIDADE\tPESO\tALTURA\tIMC\n");
+		while (fread(&pac, sizeof(pac), 1, arqimc) == 1){
+			if(strcmp(pac.nome, nomeExcluir) == 0){
+				i = 1;
+				printf("%s\t\t", pac.nome);
+				printf("%d\t", pac.idade);
+				printf("%.2f\t", pac.peso);
+				printf("%.2f\t", pac.altura);
+				printf("%.2f\n", pac.imc);
+			}
+		}
 	}
 
 	printf("Deseja mesmo excluir esse paciente?(S/N): ");
@@ -261,7 +264,8 @@ void excluirTodosPacientes(void){
 	arqimc = fopen("imc.bin", "rb");
 		
 	if (arqimc == NULL){
-		printf("\nNao ha pacientes para excluir!\n");
+		printf("Nao ha pacientes para excluir!\n");
+		getchar();
 		return;
 	} else {
 		char op;
@@ -286,34 +290,38 @@ void pesquisarPaciente(void){
     char nomePesquisar[50];
     struct paciente pac;
     int i = 0;
+	FILE *arqimc;
+	arqimc = fopen("imc.bin", "rb");
+    if (arqimc == NULL) {
+        printf("Nenhum paciente cadastrado.\n");
+		getchar();
+		return;
+    }
 
     printf("\nDigite o nome do paciente que deseja localizar: ");
     fgets(nomePesquisar, sizeof(nomePesquisar), stdin);
     nomePesquisar[strcspn(nomePesquisar, "\n")] = '\0';
 
-    FILE *arqimc;
-	arqimc = fopen("imc.bin", "rb");
-    if (arqimc == NULL) {
-        printf("Nenhum paciente cadastrado.\n");
-		return;
-    }
-
-	while (fread(&pac, sizeof(pac), 1, arqimc) == 1){
-		if(strcmp(pac.nome, nomePesquisar) == 0){
-			i = 1;
-			printf("\nPaciente encontrado:\n");
-            printf("Nome: %s\n", pac.nome);
-            printf("Idade: %d\n", pac.idade);
-            printf("Altura: %.2f\n", pac.altura);
-            printf("Peso: %.2f\n", pac.peso);
-            printf("IMC: %.2f\n\n", pac.imc);
-		}
-	}
-
 	if (i != 1){
 		printf("Paciente \"%s\" nao encontrado!", nomePesquisar);
 		fclose(arqimc);
+	} else {
+		printf("NOME\t\tIDADE\tPESO\tALTURA\tIMC\n");
+
+		while (fread(&pac, sizeof(pac), 1, arqimc) == 1){
+			if(strcmp(pac.nome, nomePesquisar) == 0){
+				i = 1;
+				printf("%s\t\t", pac.nome);
+				printf("%d\t", pac.idade);
+				printf("%.2f\t", pac.peso);
+				printf("%.2f\t", pac.altura);
+				printf("%.2f\n", pac.imc);
+			}
+		}
 	}
+
+
+
 
 	getchar();
 
@@ -324,75 +332,83 @@ void alterarPaciente(void){
     char nomePesquisar[50];
     struct paciente pac;
     int i = 0;
-
-    printf("\nDigite o nome do paciente que deseja alterar: ");
-    fgets(nomePesquisar, sizeof(nomePesquisar), stdin);
-    nomePesquisar[strcspn(nomePesquisar, "\n")] = '\0';
-
     FILE *arqimc, *temp;
 	arqimc = fopen("imc.bin", "rb");
     if (arqimc == NULL) {
         printf("Nenhum paciente cadastrado.\n");
+		getchar();
 		return;
     }
 
 	temp = fopen("temp.bin", "wb");
     if (temp == NULL) {
         printf("Nenhum paciente cadastrado.\n");
+		getchar();
 		return;
     }
 
-	while (fread(&pac, sizeof(pac), 1, arqimc) == 1){
-		if(strcmp(pac.nome, nomePesquisar) == 0){
-			i = 1;
-			int op;
-			printf("\nPaciente encontrado:\n");
-            printf("1) Nome: %s\n", pac.nome);
-            printf("2) Idade: %d\n", pac.idade);
-            printf("3) Altura: %.2f\n", pac.altura);
-            printf("4) Peso: %.2f\n", pac.peso);
+    printf("\nDigite o nome do paciente que deseja alterar: ");
+    fgets(nomePesquisar, sizeof(nomePesquisar), stdin);
+    nomePesquisar[strcspn(nomePesquisar, "\n")] = '\0';
 
-			printf("\nQual dado deseja alterar no paciente \"%s\"?: ", nomePesquisar);
-			scanf("%d", &op);
-			getchar();
+	if (i != 1){
+		printf("Paciente \"%s\" nao encontrado!", nomePesquisar);
+		fclose(arqimc);
+		getchar();
+		return;
+	} else {
+		while (fread(&pac, sizeof(pac), 1, arqimc) == 1){
+			if(strcmp(pac.nome, nomePesquisar) == 0){
+				i = 1;
+				int op;
+				printf("\nPaciente encontrado:\n");
+				printf("1) Nome: %s\n", pac.nome);
+				printf("2) Idade: %d\n", pac.idade);
+				printf("3) Altura: %.2f\n", pac.altura);
+				printf("4) Peso: %.2f\n", pac.peso);
+
+				printf("\nQual dado deseja alterar no paciente \"%s\"?: ", nomePesquisar);
+				scanf("%d", &op);
+				getchar();
 
 
-			switch(op){
-				case 1:{
-					printf("Digite o novo nome: ");
-					fgets(pac.nome, sizeof(pac.nome), stdin);
-					pac.nome[strcspn(pac.nome, "\n")] = '\0';
-					break;
+				switch(op){
+					case 1:{
+						printf("Digite o novo nome: ");
+						fgets(pac.nome, sizeof(pac.nome), stdin);
+						pac.nome[strcspn(pac.nome, "\n")] = '\0';
+						break;
+					}
+					case 2:{
+						printf("Digite a nova idade: ");
+						scanf("%d", &pac.idade);
+						getchar();
+						break;
+					}
+					case 3:{
+						printf("Digite a nova altura (em metros): ");
+						scanf("%f", &pac.altura);
+						getchar();
+						pac.imc = pac.peso / pow(pac.altura, 2);
+						break;
+					}
+					case 4:{
+						printf("Digite o novo peso (em kg): ");
+						scanf("%f", &pac.peso);
+						getchar();
+						pac.imc = pac.peso / pow(pac.altura, 2);
+						break;
+					}
+					default:{
+						printf("Opcao invalida!\n");
+						return;
+					}
 				}
-				case 2:{
-					printf("Digite a nova idade: ");
-					scanf("%d", &pac.idade);
-					getchar();
-					break;
-				}
-				case 3:{
-					printf("Digite a nova altura (em metros): ");
-					scanf("%f", &pac.altura);
-					getchar();
-					pac.imc = pac.peso / pow(pac.altura, 2);
-					break;
-				}
-				case 4:{
-					printf("Digite o novo peso (em kg): ");
-					scanf("%f", &pac.peso);
-					getchar();
-					pac.imc = pac.peso / pow(pac.altura, 2);
-					break;
-				}
-				default:{
-					printf("Opcao invalida!\n");
-					return;
-				}
+				printf("Paciente \"%s\" alterado com sucesso!\n", nomePesquisar);
+
 			}
-			printf("Paciente \"%s\" alterado com sucesso!\n", nomePesquisar);
-
+			fwrite(&pac, sizeof(pac), 1, temp);
 		}
-		fwrite(&pac, sizeof(pac), 1, temp);
 	}
 
 	fclose(arqimc);
@@ -400,11 +416,6 @@ void alterarPaciente(void){
 
 	remove("imc.bin");
 	rename("temp.bin", "imc.bin");
-
-	if (i != 1){
-		printf("Paciente \"%s\" nao encontrado!", nomePesquisar);
-		fclose(arqimc);
-	}
 
 	getchar();
 	
@@ -415,21 +426,21 @@ void exibirObesos(void){
     FILE *arqimc;
 	arqimc = fopen("imc.bin", "rb");
     if (arqimc == NULL) {
-        printf("\nNenhum paciente cadastrado ainda.\n");
+        printf("Nenhum paciente cadastrado.\n");
+		getchar();
 		return;
     }
 
     printf("\nLista de pacientes obesos cadastrados:\n\n");
-
+	printf("NOME\t\tIDADE\tPESO\tALTURA\tIMC\n");
 	while ((fread(&listPac, sizeof(listPac), 1, arqimc)) == 1)
 	{
 		if(listPac.imc >= 30){
-			printf("Nome do paciente: %s\n", listPac.nome);
-			printf("Idade: %d\n", listPac.idade);
-			printf("Peso: %.2f\n", listPac.peso);
-			printf("Altura: %.2f\n", listPac.altura);
-			printf("IMC: %.2f\n", listPac.imc);
-			printf("-----------------------------\n");
+			printf("%s\t\t", listPac.nome);
+			printf("%d\t", listPac.idade);
+			printf("%.2f\t", listPac.peso);
+			printf("%.2f\t", listPac.altura);
+			printf("%.2f\n", listPac.imc);
 		}
 	}
 
@@ -444,21 +455,21 @@ void maiores170(void){
     FILE *arqimc;
 	arqimc = fopen("imc.bin", "rb");
     if (arqimc == NULL) {
-        printf("\nNenhum paciente cadastrado ainda.\n");
+        printf("Nenhum paciente cadastrado.\n");
+		getchar();
 		return;
     }
 
     printf("\nLista de pacientes maiores que 1.70 metros:\n\n");
-
+	printf("NOME\t\tIDADE\tPESO\tALTURA\tIMC\n");
 	while ((fread(&listPac, sizeof(listPac), 1, arqimc)) == 1)
 	{
 		if(listPac.altura > 1.70){
-			printf("Nome do paciente: %s\n", listPac.nome);
-			printf("Idade: %d\n", listPac.idade);
-			printf("Peso: %.2f\n", listPac.peso);
-			printf("Altura: %.2f\n", listPac.altura);
-			printf("IMC: %.2f\n", listPac.imc);
-			printf("-----------------------------\n");
+			printf("%s\t\t", listPac.nome);
+			printf("%d\t", listPac.idade);
+			printf("%.2f\t", listPac.peso);
+			printf("%.2f\t", listPac.altura);
+			printf("%.2f\n", listPac.imc);
 		}
 	}
 
@@ -473,21 +484,22 @@ void entre2050(void){
     FILE *arqimc;
 	arqimc = fopen("imc.bin", "rb");
     if (arqimc == NULL) {
-        printf("\nNenhum paciente cadastrado ainda.\n");
+        printf("Nenhum paciente cadastrado.\n");
+		getchar();
 		return;
     }
 
     printf("\nLista de pacientes entre 20 e 50 anos:\n\n");
+	printf("NOME\t\tIDADE\tPESO\tALTURA\tIMC\n");
 
 	while ((fread(&listPac, sizeof(listPac), 1, arqimc)) == 1)
 	{
 		if(listPac.idade >= 20 && listPac.idade <= 50){
-			printf("Nome do paciente: %s\n", listPac.nome);
-			printf("Idade: %d\n", listPac.idade);
-			printf("Peso: %.2f\n", listPac.peso);
-			printf("Altura: %.2f\n", listPac.altura);
-			printf("IMC: %.2f\n", listPac.imc);
-			printf("-----------------------------\n");
+			printf("%s\t\t", listPac.nome);
+			printf("%d\t", listPac.idade);
+			printf("%.2f\t", listPac.peso);
+			printf("%.2f\t", listPac.altura);
+			printf("%.2f\n", listPac.imc);
 		}
 	}
 
@@ -502,21 +514,21 @@ void exibirSaudaveis(void){
     FILE *arqimc;
 	arqimc = fopen("imc.bin", "rb");
     if (arqimc == NULL) {
-        printf("\nNenhum paciente cadastrado ainda.\n");
+        printf("Nenhum paciente cadastrado.\n");
+		getchar();
 		return;
     }
 
     printf("\nLista de pacientes saudaveis cadastrados:\n\n");
-
+	printf("NOME\t\tIDADE\tPESO\tALTURA\tIMC\n");
 	while ((fread(&listPac, sizeof(listPac), 1, arqimc)) == 1)
 	{
 		if(listPac.imc >= 18.5 && listPac.imc < 25){
-			printf("Nome do paciente: %s\n", listPac.nome);
-			printf("Idade: %d\n", listPac.idade);
-			printf("Peso: %.2f\n", listPac.peso);
-			printf("Altura: %.2f\n", listPac.altura);
-			printf("IMC: %.2f\n", listPac.imc);
-			printf("-----------------------------\n");
+			printf("%s\t\t", listPac.nome);
+			printf("%d\t", listPac.idade);
+			printf("%.2f\t", listPac.peso);
+			printf("%.2f\t", listPac.altura);
+			printf("%.2f\n", listPac.imc);
 		}
 	}
 
@@ -534,6 +546,7 @@ void excluir50Menos(void){
 	arqimc = fopen("imc.bin", "rb");
     if (arqimc == NULL) {
         printf("Nenhum paciente cadastrado.\n");
+		getchar();
 		return;
     }
 
@@ -544,19 +557,22 @@ void excluir50Menos(void){
             printf("\"%s\" de %.2f kg", pac.nome, pac.peso);
 		}
 	}
+
+	fclose(arqimc);
+
 	if (i != 1){
 		printf("Nao existe pacientes com menos de 50 kg\n");
-		fclose(arqimc);
+		getchar();
 		return;
 	}
 
 	printf("\n\nDeseja mesmo excluir esses pacientes?(S/N): ");
 	scanf("%c", &op);
-	getchar();
 
 	if(op == 'N' || op == 'n'){
 		printf("Operação cancelada!");
-		fclose(arqimc);
+		getchar();
+		return;
 	} else if (op == 'S' || op == 's'){
 
 		FILE *temp;
