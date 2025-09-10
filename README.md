@@ -461,3 +461,72 @@ scanf ("%d", &posicao);
 fseek (arquivo, (posicao-1) * sizeof(struct notas), SSEK_SET);
 ```
 > Acompanhar exemplo em **ex2.c pra gravar aquivo em binário**, acompanhar exemplo em **ex3.c pra ler arquivo em binário** e acompanhar exemplo em **ex4.c pra ler uma posição específica**
+
+# Recursão | Alocação Dinâmica de Memória - Aula 10
+
+**Recursão:** uma *função recursiva* é quando dentro de seu código existe uma chamada de si proṕria (uma função chamar ela mesma)
+> Acompanhar exemplo 1 e 2
+
+## Alocação de memória
+
+- **Alocação estática:** ocorre em tempo de compilação, quando se define uma variável/estrutura, é necessário que defina tipo e tamanho.
+```c
+char n;
+int x;
+int v[5];
+```
+- **Alocação dinâmica:** ocorre em tempo de execução, variáveis/estruturas são declaradas sem necessidade de especificar tamanho, pois a memória será reservada apenas quando forem utilizadas.
+
+### MEMÓRIA RAM
+| Heap (Alocação dinâmica) v |
+| - |
+| Espaço livre |
+| **Stack (Variáveis locais e as chamadas de função) ^** |
+| Área de dados (Variáveis globais e estáticas) |
+| Área de Código (Instruções) |
+
+## Funções para alocaão de memória
+
+- **malloc():** Solicita alocação dinâmica, necessário informar a quantidade de bytes para alocação, função retorna um ponteira para o endereç de memória alocada, se ocorrer erro, função retorna NULL
+```c
+//Alocação dinâmica para um vetor de 15 inteiros
+
+void * malloc(int qtd_bytes_alloc);
+
+int *v;
+v = (int *) malloc(15 * sizeof(int));
+```
+- **calloc():** Difere, pois, é inicializado o espaço alocado com 0
+```c
+//Alocação dinâmica para um vetor de 15 floats
+void * calloc(int qtd, int tamanho);
+
+float *v2, *v3;
+v2 = calloc(15, sizeof(float));
+//ou
+v3 = (float *) calloc(15, sizeof(float));
+```
+- **realloc():** Aumenta ou diminui dinamicamente uma área de memória previamente alocada
+```c
+//Recebe o ponteiro para o vetor e retorna o novo espaço alocado
+
+int *v4;
+v4 = (int *) calloc(15, sizeof(int));
+
+float *v5;
+v5 = calloc(15, sizeof(float));
+
+v4 = (int *) (realloc(v4, (15+5)*sizeof(int)));
+v5 = (float *) (realloc(v4, (15-5)*sizeof(float)));
+```
+- **free():** Libera uma área de memória alocada pelas funções *malloc()*, *calloc()* ou *realloc()*
+```c
+//Recebe como parâmetro o ponteiro para a área de memória alocada
+
+int *v;;
+v = (int *) malloc(15 * sizeof(int));
+free(v);
+```
+> Acompanhar exemplo 3 para alocação dinâmica de vetor
+
+> Acompanhar exemplo 4 para teste de memória
