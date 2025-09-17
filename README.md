@@ -427,9 +427,9 @@ Utilizado para **manipular** structs. Ocupando menos bytes que .txt
 Utiliza a tabela **<stdlib.h>**
 
 ```c
-fread(variavel, tam_bytes, qtd, arquivo)
+fread(variavel, tam_bytes, qtd_de_elementos, arquivo)
 
-fwrite(variavel, tam_bytes, qtd, arquivo)
+fwrite(variavel, tam_bytes, qtd_de_elementos, arquivo)
 
 // tam_bytes é um valor que define o número de bytes da estrutura que deve ser lida/escrita
 
@@ -487,7 +487,7 @@ int v[5];
 
 ## Funções para alocaão de memória
 
-- **malloc():** Solicita alocação dinâmica, necessário informar a quantidade de bytes para alocação, função retorna um ponteira para o endereç de memória alocada, se ocorrer erro, função retorna NULL
+- **malloc():** Solicita alocação dinâmica, necessário informar a quantidade de bytes para alocação, função retorna um ponteira para o endereço de memória alocada, se ocorrer erro, função retorna NULL
 ```c
 //Alocação dinâmica para um vetor de 15 inteiros
 
@@ -530,3 +530,5 @@ free(v);
 > Acompanhar exemplo 3 para alocação dinâmica de vetor
 
 > Acompanhar exemplo 4 para teste de memória
+
+> Acompanhar exemplo 5 para alocação de Matriz

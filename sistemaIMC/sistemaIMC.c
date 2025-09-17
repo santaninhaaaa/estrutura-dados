@@ -135,8 +135,8 @@ void gravarPaciente(void){
     }
 
     printf("Nome do paciente: ");
-    fgets(newPac.nome, sizeof(newPac.nome), stdin);
-    newPac.nome[strcspn(newPac.nome, "\n")] = '\0';
+    fgets(newPac.nome, sizeof(newPac.nome), stdin); //standard input
+    newPac.nome[strcspn(newPac.nome, "\n")] = '\0'; //string complement span, significa que mede a string até achar o caracter q não quer
     printf("Idade do paciente: ");
     scanf("%d", &newPac.idade);
     getchar();
